@@ -1,6 +1,6 @@
 ---
 description: Docs, Guides, FAQ, Templates, Examples, API, and more!
-cover: .gitbook/assets/we6li1x[1].png
+cover: ../.gitbook/assets/we6li1x[1].png
 coverY: 0
 ---
 
@@ -29,4 +29,4 @@ We will follow Unity's support for **LTS releases**.  Any version beyond those m
 
 At the moment, we recommend using Unity 2020 or 2021 LTS releases.
 
-![Unity LTS Release Schedule](.gitbook/assets/Timeline.webp)
+![Unity LTS Release Schedule](../.gitbook/assets/Timeline.webp)
