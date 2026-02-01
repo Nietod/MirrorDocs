@@ -1,5 +1,5 @@
 ---
-description: High resolution Mirror logos for use in Videos, Blog posts, etc.
+description: Hochauflösende Mirror-Logos zur Verwendung in Videos, Blogbeiträgen, usw.
 ---
 
 # Mirror Branding
