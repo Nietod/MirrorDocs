@@ -1,8 +1,8 @@
-# Community Translations
+# Community Übersetzungen
 
-Some community members have translated the Mirror documentation to their native languages.\
-They may or may not be up to date.
+Einige Community Mitglieder haben die Mirror Dokumentation in ihre Muttersprache übersetzt.
+Diese Übersetzungen sind möglicherweise nicht auf dem neuesten Stand.
 
 
-
-* **Russian** : [https://tuttik-fruttik.gitbook.io/mirror-networking-rus/](https://tuttik-fruttik.gitbook.io/mirror-networking-rus/)
+* **Deutsch:** [https://mirror-networking-german.gitbook.io/docs/](https://mirror-networking-german.gitbook.io/docs/)
+* **Russisch:** [https://tuttik-fruttik.gitbook.io/mirror-networking-rus/](https://tuttik-fruttik.gitbook.io/mirror-networking-rus/)
