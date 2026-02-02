@@ -1,6 +1,6 @@
 # Network Manager
 
-The Network Manager is a component for managing the networking aspects of a multiplayer game.  It wraps up a lot of useful functionality into a single place, and makes creating, running and debugging multiplayer games as simple as possible.
+The Network Manager is a component for managing the networking aspects of a multiplayer game. It wraps up a lot of useful functionality into a single place, and makes creating, running and debugging multiplayer games as simple as possible.
 
 The Network Manager features include:
 
@@ -13,8 +13,6 @@ The Network Manager features include:
 ## Getting Started with the Network Manager <a href="#getting-started-with-the-network-manager" id="getting-started-with-the-network-manager"></a>
 
 The Network Manager is the core controlling component of a multiplayer game. To get started, create your new Network Manager from the [Script Template](../general/script-templates.md) included with Mirror, create an empty game object in your starting Scene, and add the newly created Network Manager component. The newly added Network Manager component looks like this:
-
-<figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
 
 The Inspector for the Network Manager in the Editor allows you to configure and control many things related to networking.
 
@@ -44,8 +42,6 @@ Whichever mode the game starts in (client, server, or host), the Network Address
 ## Spawn Management <a href="#spawn-management" id="spawn-management"></a>
 
 Use the Network Manager to manage the spawning (networked instantiation) of networked game objects from Prefabs.
-
-![](<../../.gitbook/assets/image (119).png>)
 
 Most games have a Prefab which represents the player, so the Network Manager has a Player Prefab slot. You should assign this slot with your player Prefab. When you have a player Prefab set, a player game object is automatically spawned from that Prefab for each user in the game. This applies to the local player on a hosted server, and remote players on remote clients. You must attach a Network Identity component to the Player Prefab before assigning it to this field.
 

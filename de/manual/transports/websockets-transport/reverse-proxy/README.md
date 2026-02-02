@@ -1,11 +1,5 @@
 # Reverse Proxy
 
-<div align="left">
-
-<figure><img src="../../../../.gitbook/assets/image (56).png" alt=""><figcaption><p>WebGL with Reverse Proxy - 500 CCU</p></figcaption></figure>
-
-</div>
-
 Using a reverse proxy performs better than doing SSL encryption within Unity as part of the game server process:
 
 * Unity is single-threaded, while the reverse proxy is a separate process that's generally engineered to enterprise class performance and is multi-threaded.

@@ -6,8 +6,6 @@ To solve this problem you can use Network Discovery. When your game starts, it s
 
 Mirror comes with a simple implementation of Network Discovery you can simply use in your game. It also provides a way for you to extend it so that you can pass additional data during the discovery phase.
 
-![](<../../.gitbook/assets/image (97).png>)
-
 NetworkDiscovery and NetworkDiscoveryHUD components are included, or you can make your own from a [ScriptTemplate](../general/script-templates.md).
 
 Network Discovery uses a UDP broadcast on the LAN enabling clients to find the running server and connect to it.
@@ -27,7 +25,7 @@ To use Network Discovery follow these steps:
 1. Create a gameobject with a NetworkManager if you have not done so already
 2. Do not add a NetworkManagerHUD. Discovery has a different UI component.
 3. Add a NetworkDiscoveryHUD component to the NetworkManager gameobject.\
-   &#x20;A NetworkDiscovery component will be automatically added and wired up to your HUD.
+   A NetworkDiscovery component will be automatically added and wired up to your HUD.
 4. Add a player to the NetworkManager if you have not done so.
 5. Build and run a standalone version
 6. Click on Start Host

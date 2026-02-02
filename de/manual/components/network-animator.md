@@ -5,13 +5,11 @@ The Network Animator component allows you to synchronize animation states for ne
 Note that if you create a Network Animator component on an empty game object, Mirror also creates a Network Identity component and an Animator component on that game object.
 
 * **Client Authority**\
-  &#x20;Enable this to have changes to animation parameters sent from client to server.
+  Enable this to have changes to animation parameters sent from client to server.
 * **Animator**\
-  &#x20;Use this field to define the Animator component you want the Network Animator to synchronize with.
+  Use this field to define the Animator component you want the Network Animator to synchronize with.
 
 Normally, changes are sent to all observers of the object this component is on. Setting **Sync Mode** to Owner Only makes the changes private between the server and the client owner of the object.
-
-![](<../../.gitbook/assets/image (139).png>)
 
 You can use the **Sync Interval** to specify how often it syncs (in seconds).
 

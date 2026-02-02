@@ -1,4 +1,4 @@
-# Custom Spawn Functions
+# Eigene Spawn Funktionen
 
 You can use spawn handler functions to customize the default behavior when creating spawned game objects on the client. Spawn handler functions ensure you have full control of how you spawn the game object, as well as how you destroy it.
 
@@ -81,8 +81,6 @@ Note that on the host, game objects are not spawned for the local client, becaus
 ### Pooling Game Objects
 
 To avoid Instantiating & Destroying heavily used GameObjects, it can be useful to pool them instead.
-
-![](../../../.gitbook/assets/2022-04-04\_20-21-49@2x.png)
 
 Here is an example of how you might set up a simple game object pooling system with custom spawn handlers. Spawning and unspawning then puts game objects in or out of the pool.
 
@@ -222,5 +220,3 @@ void DestroySelf()
 ```
 
 Press Play and fire some projectiles. Notice how nothing is instantiated. Instead, NetworkManager has a pool of children which are disabled until they are needed.
-
-![](../../../.gitbook/assets/2022-04-04\_20-22-58@2x.png)

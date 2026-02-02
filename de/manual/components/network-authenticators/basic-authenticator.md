@@ -7,18 +7,6 @@ Mirror includes a Basic Authenticator in the Mirror / Authenticators folder whic
 
 When you're done, it should look like this:
 
-<div align="left">
-
-<img src="../../../.gitbook/assets/image (101).png" alt="Network Manager with Basic Authenticator assigned">
-
-</div>
-
-<div align="left">
-
-<img src="../../../.gitbook/assets/image (54).png" alt="Basic Authenticator">
-
-</div>
-
 * Server Credentials can be set at design time or runtime
 * Client Credentials would be set at runtime, e.g. from UI input fields, **before** calling `NetworkManager.singleton.StartClient();`
 

@@ -23,13 +23,9 @@ Mirror calculates round trip time on the client, and on the server:
 
 If you want to display **rtt** in your game, you can use our `NetworkPingDisplay` component.
 
-
-
 ### Local Machine RTT
 
 If you run our Tanks demo with a server and a client on the same computer, you'll see an average rtt of around 8 ms:
-
-<figure><img src="../../.gitbook/assets/2023-07-18 - rtt 8ms.png" alt=""><figcaption><p>60 Hz update rate gives 8 ms RTT</p></figcaption></figure>
 
 This may seem strange at first: while 8 ms isn't much, it's still not as low as you would expect on your local computer. Clearly packets won't need 8 ms to travel through your memory.
 
@@ -52,6 +48,3 @@ A send interval of 60 Hz is a reasonable tradeoff between bandwidth (the more of
 * Make sure your game runs fast enough (if your CPU is too slow to achieve 120 Hz, then your send rate obviously can't be 120 Hz)
 
 With an extreme send rate and frame rate, we can easily get the Tanks demo's RTT down to 1-2ms on our local machine. Of course, this isn't recommended in a production game:
-
-<figure><img src="../../.gitbook/assets/2023-07-18 - rtt 2ms.png" alt=""><figcaption></figcaption></figure>
-

@@ -1,4 +1,4 @@
-# Player Game Objects
+# Spieler Game Objects
 
 Mirror handles player game objects differently to non-player game objects. When a new player joins the game (when a new client connects to the server), that player’s game object becomes a “local player” game object on the client of that player, and Unity associates the player’s connection with the player’s game object. Unity associates one player game object for each person playing the game, and routes networking commands to that individual game object. A player cannot invoke a command on another player’s game object, only their own.
 
@@ -11,9 +11,3 @@ Player game objects represent the player (that is, the person playing the game) 
 The Network Manager adds a player every time a client connects to the server. In some situations, though, you might not want to add players until an input event happens - such as a user pressing a “start” button on the controller. To disable automatic player creation, navigate to the Network Manager component’s Inspector and untick the Auto Create Player checkbox.
 
 The diagram below shows two clients and their local players:
-
-<div align="left" data-full-width="false">
-
-<figure><img src="../../../.gitbook/assets/NetworkLocalPlayers.png" alt=""><figcaption><p>Network Players and Clients</p></figcaption></figure>
-
-</div>

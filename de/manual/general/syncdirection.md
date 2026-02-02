@@ -1,6 +1,4 @@
-# SyncDirection
-
-![](<../../.gitbook/assets/2022-10-18 - SyncDirection.png>)
+# Synchronisierungsrichtung
 
 We have recently added the new **SyncDirection** feature, so here is a quick overview.
 
@@ -16,10 +14,10 @@ Previously, we had to use \[Command]s in order to sync client authoritative Netw
 * It's extra Bandwidth: every Command includes a function hash, etc.
 * Intervals need to be implemented manually, since syncInterval is only for OnSerialize.
 
-As you can see, it would be great if there was an option for OnSerialize to go from client to server as well.&#x20;
+As you can see, it would be great if there was an option for OnSerialize to go from client to server as well.
 
 {% hint style="info" %}
-Note that ClientToServer is a bit of a simplification. Technically it goes from the owner client, to the server, where it's then broadcast to all the other observer clients which aren't owners.&#x20;
+Note that ClientToServer is a bit of a simplification. Technically it goes from the owner client, to the server, where it's then broadcast to all the other observer clients which aren't owners.
 
 _In case of client authoritative NetworkTransform, it means your local movement is sent to the server, which then broadcasts it to the other players so they see you move as well._
 {% endhint %}

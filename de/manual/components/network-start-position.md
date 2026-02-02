@@ -7,5 +7,3 @@ To use these, attach a Network Start Position component to a game object in the 
 The Network Manager will spawn players at (0, 0, 0) by default. Adding this component to a game object will automatically register/unregister its game object's transform to the Network Manager as an available spawning position.
 
 Depending on the Network Manager Player Spawn Method setting the spawning is either Random (possible that the same spawn position will be used by two or more players) or Round Robin (use every available position, until there are more clients than spawn points).
-
-![](<../../.gitbook/assets/image (90).png>)

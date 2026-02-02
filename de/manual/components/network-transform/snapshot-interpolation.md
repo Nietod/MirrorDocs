@@ -1,6 +1,6 @@
 # Snapshot Interpolation
 
-Mirror's `NetworkTransform` component uses [**Snapshot Interpolation**](https://gafferongames.com/post/snapshot\_interpolation/).
+Mirror's `NetworkTransform` component uses [**Snapshot Interpolation**](https://gafferongames.com/post/snapshot_interpolation/).
 
 {% hint style="info" %}
 If you are not familiar with the term: **Snapshot Interpolation** interpolates through snapshots, while buffering enough of them to make up for non-ideal networking conditions like latency, packet loss and scramble.
@@ -29,18 +29,16 @@ To put things into perspective: the Snapshot Interpolation algorithm took us **4
 
 Developing Snapshot Interpolation as a standalone algorithm allows us to **simulate** the different scenarios without even running latency simulation or Mirror:
 
-* We can simulate exactly how the snapshot interpolation algorithm behaves if the remote is at t=5, we are at t=3 and we have three snapshots at t=0, 1, 2, while **sampling** through different points of the interpolation.&#x20;
+* We can simulate exactly how the snapshot interpolation algorithm behaves if the remote is at t=5, we are at t=3 and we have three snapshots at t=0, 1, 2, while **sampling** through different points of the interpolation.
 * We can simulate what happens if someone only has two snapshots, reached the end of the interpolation and is still **waiting** for the next one.
 * We can simulate how the algorithm behaves if a mobile user switches back to the game after a **100s delay**.
 * We can simulate extremely poor network conditions like 99% **packet loss & scramble**.
 * We can **catch-up** if the buffer gets too large.
 * And many more..
 
-![Snapshot Interpolation Simulations](../../../.gitbook/assets/2021-07-06\_20-23-58@2x.png)
-
 **As result**
 
-_It's only a matter of computing with snapshots & parameters in, result out._intended
+\_It's only a matter of computing with snapshots & parameters in, result out.\_intended
 
 ## Using the Algorithm
 
@@ -49,13 +47,13 @@ Please read through our `SnapshotInterpolation.cs` code in Mirror to see the alg
 To summarize, there are a few key aspects:
 
 * The **Snapshot** **interface**: your `RigidbodySnapshot`, `CharacterControllerSnapshot` etc. structs have to implement that interface.
-* The **Time Buffer**, which is a `SortedList<timestamp, Snapshot>` buffer. We offer several helper functions like `InsertIfNewEnough` for convenience.&#x20;
+* The **Time Buffer**, which is a `SortedList<timestamp, Snapshot>` buffer. We offer several helper functions like `InsertIfNewEnough` for convenience.
   * All of those functions are heavily covered with unit tests.
-* The **Compute()** algorithm: given a snapshot buffer, time, deltaTime and configuration parameters, it spits out the next interpolated Snapshot (if any).&#x20;
+* The **Compute()** algorithm: given a snapshot buffer, time, deltaTime and configuration parameters, it spits out the next interpolated Snapshot (if any).
   * This function comes with heavy test coverage, in fact it's likely the most tested function in all of Mirror.
 
 {% hint style="success" %}
-Make sure to read the [Snapshot Interpolation](https://gafferongames.com/post/snapshot\_interpolation/) article to understand how it all works, and then look through`SnapshotInterpolation.cs` and `NetworkTransformBase.cs`to see it in action. Even with our provided algorithm, it's still not an easy topic to understand and implement correctly.
+Make sure to read the [Snapshot Interpolation](https://gafferongames.com/post/snapshot_interpolation/) article to understand how it all works, and then look through`SnapshotInterpolation.cs` and `NetworkTransformBase.cs`to see it in action. Even with our provided algorithm, it's still not an easy topic to understand and implement correctly.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -72,7 +70,7 @@ We recommend using Mirror's **LatencySimulationTransport** to try it yourself, f
 
 #### Some test videos:
 
-* NetworkTransform [old vs. new comparison](https://youtu.be/z2JpT\_qLmzk) on Youtube (secret project).
+* NetworkTransform [old vs. new comparison](https://youtu.be/z2JpT_qLmzk) on Youtube (secret project).
 * See the original [Pull Request](https://github.com/vis2k/Mirror/pull/2791) progress videos. You can see how latency, loss & scramble are gradually solved with every added feature.
 * JesusLovsYooh old vs. new NetworkTransform _(watch the left build, OG NT is the old one and NT 2k is the new one)_
 

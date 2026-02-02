@@ -2,7 +2,7 @@
 description: Learn about Mirror's Lag Compensation for fast paced games.
 ---
 
-# Lag Compensation
+# Lag-Kompensation
 
 Lag Compensation (aka Rollback) is needed for fast pace / first person shooter games.
 
@@ -30,8 +30,6 @@ In the **100 ms** that passed, your friend has already moved two steps to the le
 As result, you'll always **miss the shot**.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (71).png" alt=""><figcaption><p>Where you see your friend, and where your friend actually is. Image from <a href="https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking">Valve's Article</a>.</p></figcaption></figure>
-
 This is why you need lag compensation for high paced / first person shooter games.
 
 Otherwise players will always need to aim ahead of their targets.
@@ -43,7 +41,7 @@ In practice, players will immediately complain that they don't hit where they ai
 The difference between lag compensation turned on / off is very noticeable to everyone.
 {% endhint %}
 
-For a more in-depth understand, please read through [Valve's Source Multiplayer Networking article](https://developer.valvesoftware.com/wiki/Source\_Multiplayer\_Networking). It's a good read, and worth the time even if you don't understand all of it yet.
+For a more in-depth understand, please read through [Valve's Source Multiplayer Networking article](https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking). It's a good read, and worth the time even if you don't understand all of it yet.
 
 ## Lag Compensation with Mirror
 
@@ -51,11 +49,7 @@ Our Lag Compensation is split into two parts.
 
 #### LagCompensation.cs standalone Algorithm
 
-First, there's the standalone, Unity independent,  C# LagCompensation.cs algorithm with full test coverage:
-
-<figure><img src="../../.gitbook/assets/2023-07-05 - 14-26-07@2x.png" alt="" width="344"><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/2023-07-05 - 14-28-43@2x.png" alt=""><figcaption></figcaption></figure>
+First, there's the standalone, Unity independent, C# LagCompensation.cs algorithm with full test coverage:
 
 The algorithm can record and sample any History of type \<T>.\
 In other words, you can custom fit it to your needs if you want to.\
@@ -64,8 +58,6 @@ Keep in mind that this is very low level, and it's easier to use the high level 
 #### Lag Compensator Component
 
 The second part: our `Lag Compensator` component:
-
-<figure><img src="../../.gitbook/assets/image (146).png" alt=""><figcaption></figcaption></figure>
 
 This hides all the magic in one component which automatically records a history of Collider snapshots in 3D. Simply add this to your Player object, and it'll handle everything for you!
 
@@ -112,8 +104,6 @@ void CmdFiredWeapon(Player target, Vector3 originPoint, Vector3 hitPoint)
 
 Note the above code is slightly simplified, but that's really all there's to it other than a few more optional configuration parameters in the LagCompensator's 'Check' functions.
 
-
-
 {% hint style="info" %}
 Our Lag Compensator is super easy to use, and you can still add more complex checks to if if needed. What matter is that our standalone LagCompensation.cs algorithm is generic \<T>, working with anything you need (2D, 3D, custom physics, etc.).
 {% endhint %}
@@ -129,8 +119,6 @@ If you prefer to not use the convenience LagCompensator component, then you can 
 
 In other words: ignore this example if you are using the component!
 
-<figure><img src="../../.gitbook/assets/2023-06-29 - lag compensation estimated time accurate by 6ms.png" alt=""><figcaption><p>Mirror's Lag Compensation Example</p></figcaption></figure>
-
 **This demo is very easy to understand:**
 
 * The filled **white square** is an object on the server
@@ -145,4 +133,3 @@ This was Lag Compensation part one: the algorithm.
 You can use this in games _today_, you just need to adapt the demo to your needs.
 
 You also need to worry about rolling back the physics world, we don't have a demo for this _yet_.
-

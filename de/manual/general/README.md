@@ -12,29 +12,25 @@ Mirror is focused on ease of use and iterative development and provides useful f
 
 Mirror is built from a series of layers that add functionality:
 
-![](<../../.gitbook/assets/image (111).png>)
-
 ## Server and Host <a href="#server-and-host" id="server-and-host"></a>
 
 Mirror multiplayer games include:
 
 * **Server**\
-  &#x20;A server is an instance of the game which all other players connect to when they want to play together. A server often manages various aspects of the game, such as keeping score, and transmit that data back to the client.
+  A server is an instance of the game which all other players connect to when they want to play together. A server often manages various aspects of the game, such as keeping score, and transmit that data back to the client.
 * **Clients**\
-  &#x20;Clients are instances of the game that usually connect from different computers to the server. Clients can connect over a local network, or online.
+  Clients are instances of the game that usually connect from different computers to the server. Clients can connect over a local network, or online.
 
 A client is an instance of the game that connects to the server, so that the person playing it can play the game with other people, who connect on their own clients.
 
 The server might be either a “dedicated server”, or a “host server”.
 
 * **Dedicated server**\
-  &#x20;This is an instance of the game that only runs to act as a server.
+  This is an instance of the game that only runs to act as a server.
 * **Host server**\
-  &#x20;When there is no dedicated server, one of the clients also plays the role of the server. This client is the “host server”. The host server creates a single instance of the game (called the host), which acts as both server and client.
+  When there is no dedicated server, one of the clients also plays the role of the server. This client is the “host server”. The host server creates a single instance of the game (called the host), which acts as both server and client.
 
 The diagram below represents three players in a multiplayer game. In this game, one client is also acting as host, which means the client itself is the “local client”. The local client connects to the host server, and both run on the same computer. The other two players are remote clients - that is, they are on different computers, connected to the host server.
-
-![](<../../.gitbook/assets/image (86).png>)
 
 The host is a single instance of your game, acting as both server and client at the same time. The host uses a special kind of internal client for local client communication, while other clients are remote clients. The local client communicates with the server through direct function calls and message queues, because it is in the same process. It actually shares the Scene with the server. Remote clients communicate with the server over a regular network connection. When you use Mirror’s, this is all handled automatically for you.
 

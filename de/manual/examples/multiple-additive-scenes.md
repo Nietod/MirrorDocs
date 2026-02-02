@@ -1,4 +1,4 @@
-# Multiple Additive Scenes
+# Mehrere Additive Szenen
 
 In Build Settings, remove all scenes and add both of the scenes from the Scenes folder in the following order:
 
@@ -31,5 +31,3 @@ Click Client in the built instances.
 * Colliding with the small colored spheres scores points base on their color.
 * Colliding with the larger tumblers sends them rolling around...they're server-side non-kinematic rigidbodies.
 * Only scores for the players in the same subscene are shown at the top of the game window.
-
-![](<../../.gitbook/assets/image (126).png>)

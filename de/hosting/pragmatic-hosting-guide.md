@@ -2,9 +2,9 @@
 description: Confused by all the hosting options? Welcome to our pragmatic hosting guide.
 ---
 
-# The Pragmatic Hosting Guide
+# Der pragmatische Hosting-Leitfaden
 
-Mirror takes care of your multiplayer game code. \
+Mirror takes care of your multiplayer game code.\
 However, we still need to talk about hosting!
 
 {% hint style="success" %}
@@ -23,9 +23,7 @@ Here is a brief overview of different hosting technologies, which games they are
 
 ## Update: Edgegap Unity Plugin 🇨🇦
 
-<figure><img src="../.gitbook/assets/image (155).png" alt=""><figcaption></figcaption></figure>
-
-This is the new, modern way to host game servers. The Edgegap Hosting plugin is already in your Mirror folder and allows you to host to the cloud directly from Unity Editor. We wouldn't mention it here if it wouldn't make life easier.&#x20;
+This is the new, modern way to host game servers. The Edgegap Hosting plugin is already in your Mirror folder and allows you to host to the cloud directly from Unity Editor. We wouldn't mention it here if it wouldn't make life easier.
 
 {% hint style="success" %}
 **Edgegap** allows for ultra low latency hosting, managed directly from the Unity Editor.
@@ -45,16 +43,16 @@ After building your game, you could technically host it on your own machine, or 
 
 {% hint style="warning" %}
 This method is not recommended.\
-&#xNAN;_... except for LAN parties, if you still remember those._&#x20;
+\&#xNAN;_... except for LAN parties, if you still remember those._
 {% endhint %}
 
 ### **2.) Player Hosted + Relay / NAT Punchthrough**
 
-<img src="../.gitbook/assets/image (62).png" alt="" data-size="original">
+
 
 Still, letting players host their own games can be useful. You will save money on server hosting costs and players will create their servers on demand. We just need to solve the connectivity issue. For that, we can combine two tools:
 
-* **NAT Punchthrough**: a hacky technique to 'punch a whole' through your router / firewall so that others can connect to your game. This requires one central server for players to connect to **once**. After the initial connect to the central server, your router / firewall will most likely allow outside packets from other players directly. This works about **70% of the time**.&#x20;
+* **NAT Punchthrough**: a hacky technique to 'punch a whole' through your router / firewall so that others can connect to your game. This requires one central server for players to connect to **once**. After the initial connect to the central server, your router / firewall will most likely allow outside packets from other players directly. This works about **70% of the time**.
 * **Relay**: to avoid headaches, you can offer your own (or rent) a Relay server, which basically forwards traffic between players. Instead of talking to each other, your players all talk through a central Relay. This solves our router + firewall issues 100% of the time. However, you'll usually have to pay for bandwidth.
 
 Note that **Uptime, Security and Latency** are still not solved here. However, a decent Relay may reduce your latency to be good enough.
@@ -65,8 +63,6 @@ Note that **Uptime, Security and Latency** are still not solved here. However, a
 {% endhint %}
 
 ### **3.) Dedicated Servers**
-
-![](../.gitbook/assets/hetzner.png)
 
 This is the old school way of hosting, and probably what most people consider at first.
 
@@ -85,13 +81,11 @@ It's cumbersome to sign & cancel contracts for every extra server. And you still
 
 ### **4.) Cloud Hosting**
 
-![](../.gitbook/assets/google.png)
-
 You may have heard about Amazon AWS, Google Cloud, Microsoft Azure, etc. They offer virtual servers, which you can spin up and remove with just a few clicks without manually signing contracts & canceling them every time.
 
 Usage is generally similar to dedicated servers: you configure your machine, pick your Linux distro, upload your server executable and maintain it yourself.
 
-However, Cloud Hosting is **significantly more convenient**. You can rent new servers and remove old servers from a UI with just a few clicks. At the end of the month, you are billed for the resources which you have used.&#x20;
+However, Cloud Hosting is **significantly more convenient**. You can rent new servers and remove old servers from a UI with just a few clicks. At the end of the month, you are billed for the resources which you have used.
 
 You could even configure your server once, and then spin up additional servers based on the same image with just a few clicks.
 
@@ -112,8 +106,6 @@ At Mirror we use Google Cloud for our CCU tests & Discord Bots.
 
 ## **5.) Orchestration**
 
-![](<../.gitbook/assets/edgegap (1).png>)
-
 Orchestration aims to automate hosting for session based games, on demand.
 
 If your game suddenly becomes popular, you may need hundreds or thousands of servers at a time. Setting this up manually with dedicated servers is basically impossible, and even with Cloud Hosting it would still require quite a lot of headaches & time, which is probably better spent on your game itself.
@@ -123,4 +115,3 @@ Well, good news: orchestration is the future of multiplayer game hosting. In sim
 1. You **create a lightweight Docker** image: configure a text file (".Dockerfile") with your Linux distribution, packages, open ports, etc. and then compile your whole project into a "Docker Image". If you aren't familiar with Docker, fear not. It makes your life a **lot** easier. Just learn it once, you'll wind up using it for all your hosting afterwards. No more manually setting up Linux servers, no more apt-get, no more maintenance etc.
 2. **Upload your image** to the Orchestration Service.
 3. **Configure** your orchestration in a web UI. They will ask you how many servers you want to spawn, when to spawn more, when to remove old servers, etc.
-

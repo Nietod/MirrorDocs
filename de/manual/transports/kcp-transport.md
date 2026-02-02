@@ -8,8 +8,6 @@ description: https://github.com/vis2k/kcp2k
 
 kcp2k is the new default Transport for Mirror.
 
-![The KCP Transport component in the Inspector window](<../../.gitbook/assets/image (120).png>)
-
 ### About this transport <a href="#about-this-transport" id="about-this-transport"></a>
 
 Why KCP: [https://github.com/skywind3000/kcp/blob/master/README.en.md](https://github.com/skywind3000/kcp/blob/master/README.en.md)

@@ -1,6 +1,6 @@
 ---
 description: Dokumentation, Leitfäden, FAQ, Vorlagen, Beispiele, API, und mehr!
-cover: ../.gitbook/assets/we6li1x[1].png
+cover: .gitbook/assets/we6li1x[1].png
 coverY: 0
 ---
 
@@ -29,4 +29,4 @@ Wir werden uns an die Unterstützung von Unity für **LTS Versionen** halten. Al
 
 Derzeit empfehlen wir die Verwendung von Unity 2020 oder 2021 LTS.
 
-![Unity LTS-Veröffentlichungsplan](../.gitbook/assets/Timeline.webp)
+![Unity LTS-Veröffentlichungsplan](.gitbook/assets/Timeline.webp)

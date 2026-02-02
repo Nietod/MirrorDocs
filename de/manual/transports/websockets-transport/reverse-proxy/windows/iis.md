@@ -9,19 +9,7 @@ From the Start menu, type IIS and you'll be able to select Internet Information 
 
 In IIS Manager, select the server just below Start Page in the left panel, and open Configuration Editor in the Management section near the bottom of the main window.
 
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (32).png" alt=""><figcaption><p>IIS Manager - Configuration Editor in Management section</p></figcaption></figure>
-
-</div>
-
 Change the Section selector to `system.webServer/proxy` as shown in this image and set Enabled to True and click Apply (top right).
-
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
-
-</div>
 
 ### Initial Site Bindings
 
@@ -32,19 +20,7 @@ Now in the left panel of IIS Manager, expand the server and Sites and select the
 * In the Host name field, type the Fully Qualified Domain Name (FQDN) that you want clients to connect to, and click OK, and then Close the Site Bindings window.
 * This will be your domain that you've registered and set up DNS pointing to this web server.
 
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (21).png" alt=""><figcaption><p>Edit Site Bindings - Type your FQDN and click OK</p></figcaption></figure>
-
-</div>
-
 This is what it should look like when you're done:
-
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (31).png" alt=""><figcaption><p>Site Bindings with Host Name</p></figcaption></figure>
-
-</div>
 
 ### App Pool Recycling
 
@@ -54,16 +30,10 @@ Since all clients will be connected through IIS, which uses a "worker process" t
 * In the left panel, click Application Pools and in the main panel select the one that was assigned in Basic Settings above, and click Recycling in the right panel.
 * In the Edit Application Pool Recycling Settings, make sure nothing is checked (as shown below), then click Next, and then Finish.
 
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (12).png" alt=""><figcaption><p>Edit Application Pool Recycling Settings</p></figcaption></figure>
-
-</div>
-
 ### SSL Certificate
 
 {% hint style="warning" %}
-NOTE: DNS records pointing to this server need to be done before this step, and propagated to the world DNS servers.  If you can't reach this site with a browser, setting up SSL using WinAcme won't work.
+NOTE: DNS records pointing to this server need to be done before this step, and propagated to the world DNS servers. If you can't reach this site with a browser, setting up SSL using WinAcme won't work.
 {% endhint %}
 
 You'll need an SSL certificate for your domain.
@@ -71,12 +41,6 @@ You'll need an SSL certificate for your domain.
 * Download WinAcme and save it to its own folder from [here](https://www.win-acme.com/) and unzip it to that same folder (makes updating it convenient later as you can safely overwrite with newer versions).
 * Run WACS.exe and follow the prompts to create a Certificate using default settings for the Default site in IIS. You'll update the bindings after this step for the game client and proxy.
 * WinAcme creates a scheduled task to update the SSL periodically before it expires.
-
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (61).png" alt=""><figcaption><p>WinAcme Console Application</p></figcaption></figure>
-
-</div>
 
 ### Additional Site Bindings
 
@@ -86,13 +50,7 @@ You'll see that WinAcme has added a binding for port 443 with the same host name
 
 You can double click the port 443 binding to see how it is set up with the SSL certificate selected.
 
-Click Add to create one more binding for port 7777 as shown below, using the same SSL certificate as was used for port 443.  This will be for the client to connect to the Reverse Proxy that will be set up later in this document. If you're running multiple game server instances on the same server, just add a binding for each port you're using. Make sure your firewall has all of the ports open.
-
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/IIS Bindings.png" alt=""><figcaption><p>IIS Bindings</p></figcaption></figure>
-
-</div>
+Click Add to create one more binding for port 7777 as shown below, using the same SSL certificate as was used for port 443. This will be for the client to connect to the Reverse Proxy that will be set up later in this document. If you're running multiple game server instances on the same server, just add a binding for each port you're using. Make sure your firewall has all of the ports open.
 
 ### Simple Web Transport
 
@@ -105,22 +63,16 @@ Make sure Simple Web Transport is set up like this:
 * Client Port Option: **Specify Port**
 * Custom Client Port: **7777**
 
-<div align="left" data-full-width="false">
-
-<figure><img src="../../../../../.gitbook/assets/image (153).png" alt=""><figcaption><p>Simple Web Transport with Reverse Proxy Settings</p></figcaption></figure>
-
-</div>
-
 ### Build and Deploy
 
 In Unity, Network Manager, change Network Address to the same name as you used in Bindings above, e.g. game.example.com.
 
-* Select Dedicated Server platform in Build Settings, build and deploy your server to a folder on the server.  Mirror will start the server on the Port specified (27777 from the image above).
+* Select Dedicated Server platform in Build Settings, build and deploy your server to a folder on the server. Mirror will start the server on the Port specified (27777 from the image above).
 * Change the platform in Build Settings to WebGL, and build the client, and upload that to the folder on your server that your Default website is pointed to in IIS.
 
 ### web.config for IIS
 
-In IIS Manager, right-click the Default site that you configured earlier and choose Explore. This is the folder where you'll deploy your WebGL build files.&#x20;
+In IIS Manager, right-click the Default site that you configured earlier and choose Explore. This is the folder where you'll deploy your WebGL build files.
 
 * If there's already a `web.config` file in that folder, open it in Notepad, otherwise create an empty one and open it.
 * Merge the XML below into whatever might already be there, save and close it.

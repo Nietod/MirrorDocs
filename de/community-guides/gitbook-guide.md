@@ -2,7 +2,7 @@
 description: A couple of examples of what's possible now...
 ---
 
-# Gitbook Guide
+# Gitbook Leitfaden
 
 ## Regular Text
 
@@ -16,7 +16,7 @@ Regular text can also have [links](https://github.com/vis2k/Mirror).
 ### Hints
 
 {% hint style="info" %}
-&#x20;Super-powers are granted randomly so please submit an issue if you're not happy with yours.
+Super-powers are granted randomly so please submit an issue if you're not happy with yours.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -43,8 +43,6 @@ $$
 > _“In the information age, the barriers just aren't there. The barriers are self imposed. If you want to set off and go develop some grand new thing, you don't need millions of dollars of capitalization. You need enough pizza and Diet Coke to stick in your refrigerator, a cheap PC to work on, and the dedication to go through with it. We slept on floors. We waded across rivers.”_ ― **John D. Carmack, Masters of Doom**
 
 ### Images
-
-![Image Description (optional)](<../.gitbook/assets/image (55).png>)
 
 ### Tables
 

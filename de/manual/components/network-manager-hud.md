@@ -6,18 +6,14 @@ It is not, however, intended to be included in finished games. The idea is that 
 
 To start using the Network Manager HUD, either add the component to the same scene object that has the Network Manager component, or create an empty game object in your scene (menu: game object > Create Empty) and add the Network Manager HUD component to the new game object.
 
-![](<../../.gitbook/assets/image (92).png>)
-
 * **Show GUI**\
-  &#x20;Tick this checkbox to show the HUD GUI at run time. This allows you to reveal or hide it for quick debugging.
+  Tick this checkbox to show the HUD GUI at run time. This allows you to reveal or hide it for quick debugging.
 * **Offset X**\
-  &#x20;Set the horizontal **pixel** offset of the HUD GUI, measured from the left edge of the screen.
+  Set the horizontal **pixel** offset of the HUD GUI, measured from the left edge of the screen.
 * **Offset Y**\
-  &#x20;Set the vertical pixel offset of the HUD GUI, measured from the top edge of the screen.
+  Set the vertical pixel offset of the HUD GUI, measured from the top edge of the screen.
 
 The Network Manager HUD provides the basic functions so that people playing your game can start hosting a networked game, or find and join an existing networked game. Unity displays the Network Manager HUD as a collection of simple UI buttons in the Game view.
-
-![](<../../.gitbook/assets/image (8).png>)
 
 ## Using the HUD <a href="#using-the-hud" id="using-the-hud"></a>
 
@@ -29,8 +25,6 @@ Click the Host (Server + Client) button to start a game as a host on the local n
 
 When you click this button, the HUD switches to a simple display of network details, and a Stop button which allows you to stop hosting the game and return to the main HUD menu.
 
-![](<../../.gitbook/assets/image (10).png>)
-
 When you have started a game as a host, other players of the game can then connect to the host to join the game.
 
 Click the Stop button to disconnect from the host. Clicking Stop also returns to the main HUD menu.
@@ -41,8 +35,6 @@ To connect to a host on the internet use the text field to the right of the Clie
 
 Use the default “localhost” in this field if you are running multiple instances of your game on one computer, to test multiplayer interactivity. To do this, you can create a standalone build of your game, and then launch it multiple times on your computer. This is a common way to quickly test that your networked game interactions are functioning as you expect, without you needing to deploy your game to multiple computers or devices.
 
-![](<../../.gitbook/assets/image (135).png>)
-
 When you want to test your game on multiple machines you need to put the address of the computer acting as host into the address text field.
 
 The computer acting as the host needs to tell their IP address to everyone running clients, so that you can type this into the box. For local clients on a LAN, that's the local IP address. For remote clients, that's the WAN IP address of the router of the host. Firewall rules and port-forwarding are generally required for a computer to act as host and accept connections from other computers, whether they're on the LAN or the internet.
@@ -51,11 +43,7 @@ Enter the IP address (or leave it as “localhost” if you are testing it on yo
 
 When the client is attempting to connect, the HUD displays a Cancel Connection Attempt button. Click this if you want to stop trying to connect to the host.
 
-![](<../../.gitbook/assets/image (26).png>)
-
 If the connection is successful, the HUD displays the Stop button. Click this if you want to stop the game on the client and disconnect from the host:
-
-![](<../../.gitbook/assets/image (48).png>)
 
 ### Server Only <a href="#server-only" id="server-only"></a>
 

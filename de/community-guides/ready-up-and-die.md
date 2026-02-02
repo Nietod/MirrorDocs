@@ -10,17 +10,13 @@ description: Written by JesusLuvsYooh / StephenAllenGames.co.uk
 
 2: An “isDead” player status to create a death and respawn.
 
-![](../.gitbook/assets/RUAD9.jpg)
-
 ## **Part 1:**
 
-Blank Project, import Mirror from Asset Store/ Discord Releases unity package.&#x20;
+Blank Project, import Mirror from Asset Store/ Discord Releases unity package.
 
 Open up your scene, for this guide we will use Mirror/Examples/Tanks
 
 You should be familiar with the examples, if not, have a quick play, build and run, join yourself by having two games on same PC connecting via 'localhost'.
-
-![Mirror/Examples/Tank/Scenes/Scene](../.gitbook/assets/Canvas2.jpg)
 
 ## **Part 2:**
 
@@ -28,15 +24,9 @@ Create a script called SceneScript, due to this guide modifying Mirrors Example 
 
 Add this script onto a game object in the scene, also named SceneScript, this will be our canvas to player link as well as our 'scene manager', then attach a NetworkIdentity component, like below.
 
-![](../.gitbook/assets/RUAD3.jpg)
-
-![](../.gitbook/assets/RUAD4.jpg)
-
-![](../.gitbook/assets/RUAD5.jpg)
-
 ## **Part 3:**
 
-Open up this SceneScript.cs, and add the following code, parts will be commented to explain  :)
+Open up this SceneScript.cs, and add the following code, parts will be commented to explain :)
 
 {% code title="SceneScript.cs" %}
 ```csharp
@@ -151,15 +141,13 @@ namespace Mirror.Examples.Tanks
 Now open Tank.cs, this is the guides equivalent to your eventual PlayerScript.
 
 And in the Update function, below the isLocalPlayerCheck, add:\
-&#x20;if (sceneScript.readyStatus != 1) return;
+if (sceneScript.readyStatus != 1) return;
 
 This will stop the tanks below code (movement and projectile firing) from running until ready.
 
-![](../.gitbook/assets/RUAD6.jpg)
-
 Add the code at the bottom of Tank.cs, after the “RpcOnFire” ends.
 
-(But still inside the namespace { }  )
+(But still inside the namespace { } )
 
 {% code title="Tank" %}
 ```csharp
@@ -235,31 +223,20 @@ Open up the Tank player prefab, and add the two child objects to the “Objects 
 
 Upon the sync var change of “isDead”, the hook callback will cycle through this array.
 
-![](../.gitbook/assets/RUAD7.jpg)
-
 ## **Part 6:**
 
 Create a Canvas in the scene, by either right clicking, UI canvas, or the menu at top, GameObject, UI, Canvas.\
 Set the canvas scaler to “Scale with Screen Size”, this will help with keeping everything same size, on both low and high resolution screens, and is best to set before adding Canvas contents.
-
-![](../.gitbook/assets/Canvas4.jpg)
 
 Create your Unity Canvas UI, with a text, and 3 buttons, label them for easier reference.
 
 Here I have placed Status text at top, Server Set Ready button in the middle, and the Die and Respawn buttons to the right.\
 After this set the variables to the correct UI on your SceneScript, like below.
 
-![](../.gitbook/assets/RUAD8.jpg)
-
 ## **Part 7:**
 
 Build and Run!
 
-Enjoy  :)
+Enjoy :)
 
 (To help with side by side play testing - Project settings, Player, Resolution and Presentation, Fullscreen Mode to “Windowed”.)
-
-![](../.gitbook/assets/RUAD9.jpg)
-
-
-

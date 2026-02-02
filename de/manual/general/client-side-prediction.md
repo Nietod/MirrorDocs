@@ -2,17 +2,13 @@
 description: Everything you need to know about Mirror's new Prediction algorithm!
 ---
 
-# Client Side Prediction
-
-<figure><img src="../../.gitbook/assets/2024-03-21 - 12-13-11@2x.png" alt=""><figcaption><p>Billiards is the perfect example to learn about Prediction.</p></figcaption></figure>
+# Clientseitige Vorhersage
 
 {% hint style="warning" %}
 Mirror is currently experimenting with various Prediction algorithms. This is all purely experimental, we don't recommend using this just yet.
 {% endhint %}
 
-
-
-Let's walk through why we even need prediction, how it works, how we implemented it and what you can use it for in your game **today**.&#x20;
+Let's walk through why we even need prediction, how it works, how we implemented it and what you can use it for in your game **today**.
 
 {% hint style="info" %}
 Please read until the end to understand the **back story** of our Prediction algorithm!
@@ -85,7 +81,7 @@ So, what's the solution then?
 
 Well, it's actually quite simple in theory. The client just needs to store a history of positions:
 
-* Client executes `Rigidbody.AddForce(force)`&#x20;
+* Client executes `Rigidbody.AddForce(force)`
 * _(Client saves Rigidbody.position every 50 ms for comparisons later)_
 * Client sends `[Command] CmdApplyForce(force)` to server (... this takes 50 ms)
 * Server executes `Rigidbody.AddForce(force)` as well
@@ -97,8 +93,6 @@ As result, it doesn't matter if we got the server state 50ms, 100ms or 150 ms la
 The client just checks in history \[- 100 ms] and compares!
 
 Visualized, it may look like this, where the white boxes are the history of positions:
-
-<figure><img src="../../.gitbook/assets/2024-03-21 - 13-15-30@2x.png" alt=""><figcaption></figcaption></figure>
 
 Okay now, we are almost there.
 
@@ -132,8 +126,6 @@ Now that we understand what Prediction is and how it works, let's actually try i
 * Try increasing the latency in our [Latency Simulation](../transports/latency-simulaton-transport.md) component to 50ms.
 * Build and try again - even with latency, reactions are instant!
 
-<figure><img src="../../.gitbook/assets/2024-03-21 - Predicted Billiards Release.png" alt=""><figcaption></figcaption></figure>
-
 Did you notice the transparent ghost objects? When using PredictedRigidbody, there are always:
 
 * **The (transparent) predicted physics object:** this is the Rigidbody which predicts ahead and has corrections applied to it.
@@ -144,11 +136,7 @@ Did you notice the transparent ghost objects? When using PredictedRigidbody, the
 
 If you want to add prediction to the networked Rigidbodies in your game, it's super easy!
 
-
-
 **First**, Add the **PredictedRigidbody** component to your prefab:
-
-<figure><img src="../../.gitbook/assets/2024-03-21 - 13-48-29@2x.png" alt=""><figcaption></figcaption></figure>
 
 **Second**, simulate physics on client **AND** send the command to the server:
 
@@ -178,8 +166,6 @@ But wait, there's _one more thing... we need to understand **Prediction Mode**!_
 {% endhint %}
 
 ## Smoothing Mode
-
-<figure><img src="../../.gitbook/assets/2024-03-28 - 22-14-15@2x.png" alt=""><figcaption></figcaption></figure>
 
 Prediction & corrections are always hard applied to the Rigidbody. In order to smooth out results & jitter, there are two different ways for motion smoothing:
 
@@ -221,9 +207,7 @@ Just to repeat this one more time:
 It's important to understand that once you add PredictedRigidbody with **Smooth Mode** to an object, it will automatically separate the Rigidbody & Colliders into a Ghost object while predicting!
 
 {% hint style="danger" %}
-Please keep this in mind.&#x20;
-
-
+Please keep this in mind.
 
 `GetComponent<Rigidbody>()` won't always be available while predicting.
 
@@ -259,7 +243,7 @@ This article focuses on `PredictedRigidbody` - which is a complete component tha
 If you want to predict other types like CharacterControllers, there's good news and bad news:
 
 * The **Good News** is that the underlying Prediction & Correction algorithms are kept generic. You can find them in Prediction.cs and use them for other types easily.
-* The **Bad News** is that they are just standalone algorithms. If you want to make an easy-to-use component like PredictedCharacterController, then it's still a bit of work on top of it.&#x20;
+* The **Bad News** is that they are just standalone algorithms. If you want to make an easy-to-use component like PredictedCharacterController, then it's still a bit of work on top of it.
 
 We recommend you check out the code in PredictedRigidbody.cs to get a feeling for the separation between high level component and low-level algorithm, and to see how much extra work is needed to predict a specific type like Rigidbody.
 
@@ -305,21 +289,17 @@ Yes, you read that right! But nothing is for free, so let's keep reading first..
 
 Mirror's Prediction was developed in collaboration with a game studio aiming to build networked physics scenes with thousands of predicted Rigidbodies. Using **Physics.Simulate()** was never an object for our implementation since it would not scale, so we had to be creative.
 
-At first we thought: there is no way to scale prediction to that many objects. But there was a catch: while the scene has thousands of predicted Rigidbodies, only a few of them are interacted with at any give time by the local player. For example, in most games you may grab a bottle or kick ladder down, but you rarely interact with thousands of Rigidbodies at the same time.&#x20;
+At first we thought: there is no way to scale prediction to that many objects. But there was a catch: while the scene has thousands of predicted Rigidbodies, only a few of them are interacted with at any give time by the local player. For example, in most games you may grab a bottle or kick ladder down, but you rarely interact with thousands of Rigidbodies at the same time.
 
 While there are games where interacting with thousands of Rigidbodies is necessary (i.e. destruction type games), this was not the case here. So we thought: why don't we try to manually resimulate individual Rigidbodies without using PhysX!
 
-While we didn't believe it was going to work, we didn't have a choice. So, we set out to try it anyway.&#x20;
+While we didn't believe it was going to work, we didn't have a choice. So, we set out to try it anyway.
 
 ## History
 
 We started with a very simplified example that's mostly in 2D: predicted Billiards - the example that you can find in your Mirror folder today.
 
-<figure><img src="../../.gitbook/assets/2024-03-21 - 14-46-53@2x.png" alt=""><figcaption></figcaption></figure>
-
-Specifically, we tried to manually resimulate Rigidbody.position/rotation/velocity/angularVelocity in our C# code, outside of any physics engine. This kinda worked for the first few months, but it never really looked good enough for a production game. But again - we didn't have a choice so we just kept at it. After 4 months of debugging, we managed to fix a few miscalculations, inconsistencies and mis-predictions.&#x20;
-
-<figure><img src="../../.gitbook/assets/2024-03-21 - 14-49-29@2x.png" alt=""><figcaption><p>We debugged mispredictions with lots of Gizmos, Debug.DrawLine and stepping through recordings frame by frame.</p></figcaption></figure>
+Specifically, we tried to manually resimulate Rigidbody.position/rotation/velocity/angularVelocity in our C# code, outside of any physics engine. This kinda worked for the first few months, but it never really looked good enough for a production game. But again - we didn't have a choice so we just kept at it. After 4 months of debugging, we managed to fix a few miscalculations, inconsistencies and mis-predictions.
 
 Our Predicted Billiards demo actually ended up working quite well - much better than we anticipated. So it was time to port this to a real game!
 
@@ -339,11 +319,9 @@ It may or may not work for your game, because we still need to test it with more
 
 ## Worst Case Benchmark
 
-Mirror's prediction is optimized for large physics scenes where the player only interacts with a few objects at a time. However, we still built a worst-case benchmark where you can spawn a few hundred (or thousands of) objects that are predicted all the time.&#x20;
+Mirror's prediction is optimized for large physics scenes where the player only interacts with a few objects at a time. However, we still built a worst-case benchmark where you can spawn a few hundred (or thousands of) objects that are predicted all the time.
 
 We are using this benchmark for profiling and performance optimizations. Feel free to check it out in **Examples/BenchmarkPrediction**, it's probably the easiest prediction example that you'll find!
-
-<figure><img src="../../.gitbook/assets/2024-03-21 - 19-03-23@2x.png" alt=""><figcaption></figcaption></figure>
 
 ## What's Next
 
@@ -353,8 +331,6 @@ After supporting interactable objects, our two major upcoming goals are:
 * Predicted player movement
 
 We are working on predicted stacked objects right now. As of March 2024, they generally sync well, but don't properly come to rest just yet. Just like with the early billiards demos, they don't look good enough for production games just yet! Once they work well, we will release a demo for this too.
-
-
 
 {% embed url="https://www.youtube.com/watch?v=WI0oV8ZSbUo" %}
 

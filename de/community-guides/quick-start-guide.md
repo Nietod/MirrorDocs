@@ -2,7 +2,7 @@
 description: Written by JesusLuvsYooh / StephenAllenGames.co.uk, edited by James Frowen
 ---
 
-# Mirror Quick Start Project
+# Mirror Schnellstart Projekt
 
 This guide currently shows you:
 
@@ -21,8 +21,6 @@ The Pre-made Mirror examples are great for using as reference, it is recommend t
 \
 **End Result:**
 
-![](../.gitbook/assets/QS-image--036.jpg)
-
 ### Part 1 <a href="#part-1" id="part-1"></a>
 
 Blank Project, import Mirror from [Asset Store](https://assetstore.unity.com/packages/tools/network/mirror-129321).
@@ -37,10 +35,6 @@ Blank Project, import Mirror from [Asset Store](https://assetstore.unity.com/pac
 * On the NetworkManager component, drag your Offline and Online scene into the slots, we have only one scene for now, so put your scene in both
   * The scene must be in the build settings before dragging it to the field
 
-![Note: KCP Transport has replaced Telepathy in newer versions](../.gitbook/assets/QS-image--000.jpg)
-
-![](../.gitbook/assets/QS-image--001.jpg)
-
 ### Part 3 <a href="#part-3" id="part-3"></a>
 
 Setup the scene
@@ -53,8 +47,6 @@ Setup the scene
 * Add `NetworkStartPosition` component to this GameObject
 * Duplicate the GameObject a few times, and scatter around your scene floor so that you have multiple spawn points. I did 4, one near each corner
 
-![](../.gitbook/assets/QS-image--002.jpg)
-
 ### Part 4 <a href="#part-4" id="part-4"></a>
 
 Creating the player
@@ -65,19 +57,12 @@ Creating the player
 
 (Note: Newer Mirror versions use "Sync Direction" set this to "Client To Server".)
 
-![](../.gitbook/assets/QS-image--003.jpg)
-
 * Rename that object Player
 * Add an empty PlayerScript
 * Drag into Project to create a prefab
 * Then delete Player from scene
-
-![](../.gitbook/assets/QS-image--004.jpg)
-
 * Drag your player prefab into Network manager,
 * Set spawn method to Round Robin.
-
-![](../.gitbook/assets/image--005.jpg)
 
 ### Part 5 <a href="#part-5" id="part-5"></a>
 
@@ -115,13 +100,9 @@ namespace QuickStart
 
 Press play in Unity editor, and then Host (server + client) button in the game window. You should be able to move around with a first person view capsule.
 
-![](../.gitbook/assets/QS-image--006.jpg)
-
 ### Part 7 <a href="#part-7" id="part-7"></a>
 
 Build and run your scene, open it, host on one, and press the Client button on the other. Congrats you made a mini multiplayer game!
-
-![](../.gitbook/assets/QS-image--007.jpg)
 
 ### Part 8 <a href="#part-8" id="part-8"></a>
 
@@ -133,8 +114,6 @@ Player name above heads
   * scale X to -1
 * Inside that `FloatingInfo`, create a 3D text using Unity menu (GameObject - 3D Object - 3D Text),
 * Set it up as shown in the picture below
-
-![](../.gitbook/assets/QS-image--008.jpg)
 
 ### Part 9 <a href="#part-9" id="part-9"></a>
 
@@ -216,13 +195,9 @@ namespace QuickStart
 
 Add the `PlayerNameText` and `FloatingInfo` objects into the script on the player prefab, as shown below.
 
-![](../.gitbook/assets/QS-image--009.jpg)
-
 Now if you build and run, host on one, join on the other, you will see player names and colors synced across the network!
 
 Well done, 5 stars to you!
-
-![](../.gitbook/assets/QS-image--010.jpg)
 
 ### Part 11 <a href="#part-11" id="part-11"></a>
 
@@ -231,8 +206,6 @@ A scene networked object all can access and adjust.
 Create a SceneScript.cs, add it onto an empty GameObject in the scene called SceneScript.
 
 Then create a Canvas with text and button, similar to below.
-
-![](../.gitbook/assets/QS-image--011.jpg)
 
 Add the sceneScript variable, Awake function, and CmdSendPlayerMessage to PlayerScript.cs Also add the new playerName joined line to CmdSetupPlayer();
 
@@ -304,17 +277,13 @@ namespace QuickStart
   * ignore SceneScript’s, playerScript variable, it automatically sets this!
 * Attach a NetworkIdentity component to the SceneScript gameobject, if it has not automatically done so.
 
-![](https://mirror-networking.com/docs/Articles/CommunityGuides/MirrorQuickStartGuide/image--012.jpg) ![](../.gitbook/assets/QS-image--012.jpg) ![](../.gitbook/assets/image--013.jpg)
+![](https://mirror-networking.com/docs/Articles/CommunityGuides/MirrorQuickStartGuide/image--012.jpg)
 
 Now if you build and run, host and join, you can send messages, and have a text log for actions!
 
 Wahooo!
 
-![](../.gitbook/assets/image--014.jpg) ![](../.gitbook/assets/image--015.jpg)
-
 Experiment and adjust, have fun!
-
-![](../.gitbook/assets/QS-image--016.jpg)
 
 ### Part 12 <a href="#part-12" id="part-12"></a>
 
@@ -398,11 +367,7 @@ Add the basic cube weapons first, change these later.
 * Inside that GameObject, create a cube from unity menu, (GameObject, 3D object, cube)- Remove the box colliders.
 * Rename this `Weapon1`, change position and scale to match the below pictures.
 
-![](../.gitbook/assets/QS-image--017.jpg)
-
 Duplicate weapon 1 for a Weapon 2, and change its scale and position, now you should have 2 different looking ‘weapons’!
-
-![](../.gitbook/assets/QS-image--018.jpg)
 
 ### Part 14 <a href="#part-14" id="part-14"></a>
 
@@ -411,19 +376,13 @@ Weapon switch finale.
 * Add these 2 GameObjects to your PlayerScript.cs weapons array.
 * Disable weapon 2, so only weapon 1 shows when spawning.
 
-![](../.gitbook/assets/QS-image--019.jpg)
-
 Build and run!
 
 You should see each player switching weapons, and whatever your player has equipped, will auto show on new joining players (sync var and hook magic!)
 
-![](../.gitbook/assets/QS-image--020.jpg)
-
 ### Part 15 <a href="#part-15" id="part-15"></a>
 
 Here we will make a small adjustment, as using a GameObject.Find() may not guarantee Network Identity scene objects are found. In the image below you can see our NetworkIdentity scene object gets disabled, as they are disabled until a player is in ‘ready’ status (ready status is usually set when player spawns).
-
-![](../.gitbook/assets/QS-image--021.jpg)
 
 So our chosen workaround is to have our GameObject.Find() get the non-networked scene object, which will have those Network Identity scene object as pre-set variables.
 
@@ -448,8 +407,6 @@ public SceneReference sceneReference;
 ```
 
 Now in your Unity scene create a gameobject, name it SceneReference, and add the new script. On both Scene gameobjects, set the reference to each other. So SceneReference can speak to SceneScript, and SceneScript to SceneReference.
-
-![](../.gitbook/assets/QS-image--022.jpg)
 
 Open up PlayerScript.cs and overwrite the Awake function to this:
 
@@ -483,25 +440,17 @@ public void ButtonChangeScene()
 }
 ```
 
-![](../.gitbook/assets/QS-image--023.jpg)
-
 Duplicate your previous Canvas button, rename it and reposition it, then setup the OnClick() to point to SceneScript.ButtonChangeScene, like in the image.
 
 Then drag your NetworkManager into your Project, to make it a Prefab, this way any changes we make later will apply to them all. If you haven’t already, you can sort out your project into folders, one for scripts, prefabs, scenes, textures etc. :)
-
-![](../.gitbook/assets/QS-image--024.jpg)
 
 ### Part 17 <a href="#part-17" id="part-17"></a>
 
 Save, and then Duplicate your MyScene, rename to make a Menu, GamesList and MyOtherScene, then add them to the build settings, with Menu being first.
 
-![](../.gitbook/assets/QS-image--025.jpg)
-
 Open up the Menu scene, remove the spawn points, SceneScript, SceneReference, Network Manager and Plane, so it looks like the below. Adjust the canvas button to say Play, centre it. Here is where you could add the Scores scene, Contact section, News, etc
 
 Create a Menu.cs script, add it onto a Menu gameObject.
-
-![](../.gitbook/assets/QS-image--026.jpg)
 
 Add the code to Menu.cs, then in the Button, drag the Menu gameobject into the On Click () and set it to Menu.LoadScene, like in the picture.
 
@@ -520,8 +469,6 @@ namespace QuickStart
     }
 }
 ```
-
-![](../.gitbook/assets/QS-image--027.jpg)
 
 ### Part 18 <a href="#part-18" id="part-18"></a>
 
@@ -547,17 +494,11 @@ namespace QuickStart
 }
 ```
 
-![](../.gitbook/assets/QS-image--028.jpg)
-
 ### Part 19 <a href="#part-19" id="part-19"></a>
 
 Open MyOtherScene, this is our second map. Change the camera background colour and floor material (or anything, just so you can see both scenes are different. To summarise, MyScene is map 1 and MyOtherScene is map 2.
 
-![](../.gitbook/assets/QS-image--029.jpg)
-
 In your NetworkManager prefab in PROJECT (not the one in scenes), add Menu to offline, and MyScene to Online variables. This should change all the NetworkManager prefabs to have these settings.
-
-![](../.gitbook/assets/QS-image--030.jpg)
 
 Build and Run, press Play on the Menu to go to GamesList, then click Host (for player 1). For player 2, press Play on Menu, then client connect on GamesList.
 
@@ -568,8 +509,6 @@ Now the host can change scenes between map 1 and map 2, and if anyone disconnect
 Here we will add basic weapon firing, using rigidbody prefabs. Raycasts with a representation of the fired object is usually better to do this, and keep phycisal objects for things like Grenades and Cannon balls. This section will also lack a lot of security and anti-cheat techniques in order to keep the guide simple, but anyway, here we go!
 
 Double click the Player Prefab to open it, create empty gameobjects and line them up with the end of your weapon, add them as child to each weapon. Some weapons may be short pistols, others long rifles, so the place where objects spawn will be different.
-
-![](../.gitbook/assets/QS-image--031.jpg)
 
 Create a Weapon.cs script, add it to the Weapon1 and Weapon 2 gameObjects inside the player prefab.
 
@@ -595,11 +534,7 @@ namespace QuickStart
 
 Now back in your scene we shall make 2 bullets, in Unitys menu, go to GameObject, 3D Object, Sphere. Add rigidbody to this sphere, make the scale 0.2, 0.2, 0.2, then save it as a Prefab in the Project. Do the same with a cube, so you have two different looking bullets.
 
-![](../.gitbook/assets/QS-image--032.jpg)
-
 Inside your player prefab again, select a weapon, and set the variables on weapon script.
-
-![](../.gitbook/assets/QS-image--033.jpg) ![](../.gitbook/assets/QS-image--034.jpg)
 
 ### Part 22 <a href="#part-22" id="part-22"></a>
 
@@ -615,8 +550,6 @@ public void UIAmmo(int _value)
 ```
 
 Enter MyScene (map 1). Duplicate the Canvas StatusText, rename to Ammo, then drag that Ammo text UI into SceneScript gameobject, canvasAmmoText variable. Do this on BOTH MyScene (map 1) and MyOtherScene (map 2), as we have not yet linked or prefabbed our canvas and scene scripts to auto update changes on each map.
-
-![](../.gitbook/assets/QS-image--035.jpg)
 
 Open up PlayerScript.cs, add these two variables:
 
@@ -692,5 +625,3 @@ void RpcFireWeapon()
 ```
 
 Build and Run, you should have firing, with different speeds and cooldowns on all players :)
-
-![](../.gitbook/assets/QS-image--036.jpg)

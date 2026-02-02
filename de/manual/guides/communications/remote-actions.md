@@ -4,8 +4,6 @@ The network system has ways to perform actions across the network. These type of
 
 The diagram below shows the directions that remote actions take:
 
-![](<../../../.gitbook/assets/image (96).png>)
-
 ## Commands <a href="#commands" id="commands"></a>
 
 Commands are sent from player objects on the client to player objects on the server. For security, Commands can only be sent from YOUR player object by default, so you cannot control the objects of other players. You can bypass the authority check using `[Command(requiresAuthority = false)]`.

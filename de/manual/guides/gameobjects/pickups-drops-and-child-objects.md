@@ -1,4 +1,4 @@
-# Pickups, Drops, and Child Objects
+# Aufheben, Fallenlassen und Kind-Objekte
 
 Frequently the question comes up about how to handle objects that are attached as children of the player prefab that all clients need to know about and synchronize, such as which weapon is equipped, picking up networked scene objects, and players dropping objects into the scene.
 
@@ -17,8 +17,6 @@ In the image below, Kyle has an empty game object, `RightHand`, added to the wri
 {% endhint %}
 
 The inspector shows `RightHand` assigned in 2 places, the Player Equip script, as well as the target of the 2nd Network Transform component, so we could adjust the relative position of the attachment point (not the art) for all clients as needed.
-
-![](<../../../.gitbook/assets/image (16).png>)
 
 Below is the Player Equip script to handle the changing of the equipped item, and some notes for consideration:
 
@@ -215,8 +213,6 @@ In the run-time image below, the Ball(Clone) is attached to the `RightHand` obje
 {% hint style="info" %}
 The art prefabs have simple colliders on them (sphere, box, capsule). If your art item has a mesh collider, it must be marked as Convex to work with the RigidBody on the SceneObject container.
 {% endhint %}
-
-![](<../../../.gitbook/assets/image (84).png>)
 
 ## Pickup Items <a href="#pickup-items" id="pickup-items"></a>
 

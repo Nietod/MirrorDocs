@@ -2,8 +2,6 @@
 
 A Mirror transport that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), thus enabling multiplayer in the browser from Unity WebGL builds!
 
-![Simple Web Transport Inspector](../../../.gitbook/assets/simple-web-transport-current-inspector-view.png)
-
 ## SSL Settings <a href="#ssl-settings" id="ssl-settings"></a>
 
 SSL settings is obsolete and may be removed in a future release.

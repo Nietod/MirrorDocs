@@ -2,12 +2,6 @@
 
 The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network.
 
-<div align="center">
-
-<figure><img src="../../../.gitbook/assets/image (63).png" alt=""><figcaption><p>Network Transform Component</p></figcaption></figure>
-
-</div>
-
 {% hint style="info" %}
 Mirror currently provides **two** NetworkTransform variations:
 
@@ -15,11 +9,7 @@ Mirror currently provides **two** NetworkTransform variations:
 * Unreliable: high bandwidth, extremely low latency
 
 Use NetworkTransform**Reliable** unless you need super low latency.
-
-
 {% endhint %}
-
-
 
 A game object with a Network Transform component must also have a Network Identity component. When you add a Network Transform component to a game object, Mirror also adds a Network Identity component on that game object if it does not already have one.
 
@@ -35,15 +25,13 @@ Network conditions are never ideal, so those updates may come in out of order, d
 
 Smooth movement over non-ideal network conditions is one of the more difficult problems in game networking. Our `NetworkTransform` component solves it by using [Snapshot Interpolation](snapshot-interpolation.md). We recommend reading through the linked chapter to understand it in detail.
 
-In short, smooth movement over non-ideal conditions is achieved through buffering. The worse the conditions, the higher the **Buffer Time Multiplier** needs to be. However, the higher it is the longer it buffers too.&#x20;
+In short, smooth movement over non-ideal conditions is achieved through buffering. The worse the conditions, the higher the **Buffer Time Multiplier** needs to be. However, the higher it is the longer it buffers too.
 
-The total buffer time is calculated by `sendInterval * Buffer Time Multiplier`. It's usually recommended to use a factor of '3'.&#x20;
+The total buffer time is calculated by `sendInterval * Buffer Time Multiplier`. It's usually recommended to use a factor of '3'.
 
 This means that while you can **increase** the `Buffer Time Multiplier` to make up for worse conditions, you could also **decrease** the `sendInterval` to still keep a reasonably low buffering delay.
 
-Our new Network Transform is already used in production by several real world game projects. Check out [this video](https://www.youtube.com/watch?v=z2JpT\_qLmzk) for a comparison between our old & new **Network Transform** components.
-
-
+Our new Network Transform is already used in production by several real world game projects. Check out [this video](https://www.youtube.com/watch?v=z2JpT_qLmzk) for a comparison between our old & new **Network Transform** components.
 
 {% hint style="info" %}
 Note:\

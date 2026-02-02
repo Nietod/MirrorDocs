@@ -14,9 +14,3 @@ Make sure Simple Web Transport is set up like this:
 * Client Use Wss: **checked**
 * Client Port Option: **Specify Port**
 * Custom Client Port: **7777**
-
-<div align="left">
-
-<figure><img src="../../../../../.gitbook/assets/image (153).png" alt=""><figcaption><p>Simple Web Transport with Reverse Proxy Settings</p></figcaption></figure>
-
-</div>

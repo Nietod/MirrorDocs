@@ -27,8 +27,6 @@ There are two types of player objects with the Network Room Manager:
 * Destroyed when leaving game scene
 * Handles commands in the game
 
-![](<../../.gitbook/assets/image (99).png>)
-
 ## Properties <a href="#properties" id="properties"></a>
 
 * **Show Room GUI**\

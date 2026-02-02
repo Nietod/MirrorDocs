@@ -1,7 +1,7 @@
 # Network Behaviour
 
 {% hint style="info" %}
-See also [NetworkBehaviour](https://storage.googleapis.com/mirror-api-docs/html/db/d21/class\_mirror\_1\_1\_network\_behaviour.html) in the API Reference.
+See also [NetworkBehaviour](https://storage.googleapis.com/mirror-api-docs/html/db/d21/class_mirror_1_1_network_behaviour.html) in the API Reference.
 {% endhint %}
 
 Network Behaviour scripts work with game objects that have a Network Identity component. These scripts can perform high-level API functions such as Commands, ClientRpc's, and SyncVars.
@@ -42,8 +42,6 @@ Network Behaviour scripts have the following features:
 * Sending commands
 * Client RPC calls
 * Networked events
-
-![](<../../.gitbook/assets/image (96).png>)
 
 ## Network Callbacks <a href="#network-callbacks" id="network-callbacks"></a>
 
